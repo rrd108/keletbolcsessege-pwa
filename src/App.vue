@@ -4,10 +4,16 @@
       <router-link to="/"><i class="fi-lightbulb">Ma</i></router-link>
       <router-link to="/starred"><i class="fi-star">Stars</i></router-link>
     </div>
-    <router-view/>
+    <router-view />
     <img src="./assets/KV-logo-final-brown.png">
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+}
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Quicksand:500");
