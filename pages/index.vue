@@ -5,15 +5,18 @@
   </div>
 </template>
 
+<script>
+export default {}
+</script>
+
 <style scoped>
-div {
-  margin: 5vw;
-}
 p {
+  margin: 0;
   line-height: 3rem;
 }
 cite {
   color: #431;
   opacity: 0.4;
+  font-size: 1.3rem;
 }
 </style>
