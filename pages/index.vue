@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>Végezd kötelességed megingathatatlanul, óh, Arjuna, s ne ragaszkodj se a sikerhez, se a kudarchoz! Az ilyen kiegyensúlyozottságot hívják yogának.</p>
-    <cite>Bhagavad-gita 2.48</cite>
+    <button>Gauranga</button>
   </div>
 </template>
 
@@ -9,14 +8,22 @@
 export default {}
 </script>
 
-<style scoped>
-p {
-  margin: 0;
-  line-height: 3rem;
-}
-cite {
-  color: #431;
-  opacity: 0.4;
-  font-size: 1.3rem;
+<style scoped lang="scss">
+div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100vh;
+
+  button {
+    background-color: #483a1d;
+    color: #ede0c5;
+    font-size: 2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    margin-bottom: 6rem;
+  }
 }
 </style>

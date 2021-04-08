@@ -1,15 +1,8 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/"><FontAwesomeIcon icon="lightbulb"></FontAwesomeIcon> Ma</router-link>
-      <router-link to="/starred"><FontAwesomeIcon icon="star"></FontAwesomeIcon> Stars</router-link>
-    </nav>
     <main>
       <Nuxt />
     </main>
-    <footer>
-      <img src="~/assets/KV-logo-final-brown.png">
-    </footer>
   </div>
 </template>
 
@@ -17,12 +10,21 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #EDE0C5;
+}
+
+body, button {
+  font-family: "Montserrat", sans-serif;
 }
 
 #app {
-  font-family: "Quicksand", sans-serif;
   font-size: 2rem;
   color: #483A1F;
+  background-image: url('~/assets/background.png');
+  background-size: 35rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
 }
 
 nav {
@@ -36,24 +38,13 @@ nav a {
   font-weight: bold;
   color: #431;
   padding: 1vh;
+  text-decoration: none;
+  padding: .3rem 1rem;
 }
 
 nav a.nuxt-link-exact-active {
   color: #eda;
   background: #431;
-}
-
-main {
-  margin: 5vw;
-}
-
-footer img {
-  position: absolute;
-  right: 2vw;
-  bottom: 2vh;
-  width: 50%;
-  height: auto;
-  opacity: 0.3;
 }
 
 </style>
