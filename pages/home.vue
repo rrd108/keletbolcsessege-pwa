@@ -1,25 +1,12 @@
 <template>
-  <div id="home">
+  <div>
     <header>
-      <svg
-        width="360"
-        height="100"
-        viewBox="0 125 360 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M171 210C109.327 231.444 34.5384 228.63 -50 210L-58 -3L421 -8V210C377.692 226.28 356.635 225.738 324 210C259.292 183.973 232.673 188.556 171 210Z"
-          fill="#483A1F"
-        />
-      </svg>
       <nav>
         <img src="~/assets/logo.png" alt="logo" />
         <FontAwesomeIcon icon="cog"></FontAwesomeIcon>
       </nav>
     </header>
     <main>
-
       <section>
         <h2>Napi bölcsesség</h2>
         <div><FontAwesomeIcon icon="book-open"></FontAwesomeIcon></div>
@@ -43,14 +30,14 @@ export default {}
 </script>
 
 <style lang="scss">
-#home {
-  position: relative;
+header {
+  /* mask used as we want to color the background svg */
+  background-color: #483a1d;
+  mask-image: url('~assets/header-bg.svg');
+  mask-position: bottom;
+  mask-repeat: no-repeat;
 
   nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     display: flex;
     justify-content: space-between;
     padding: 0.7rem;
