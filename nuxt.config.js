@@ -32,7 +32,7 @@ export default {
       '@nuxtjs/fontawesome',
       {
         icons: {
-          solid: ['faBookOpen', 'faCog', 'faLightbulb', 'faStar']
+          solid: ['faBookOpen', 'faCog', 'faPlayCircle', 'faVolumeUp']
         }
       }
     ],
