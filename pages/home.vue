@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <main>
       <NuxtLink to="/quote">
         <section>
@@ -23,10 +22,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head: {
+    style: [{ cssText: "header { background-color: red !important}", type: "text/css" }],
+  },
+}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 main {
   padding: 1rem;
 

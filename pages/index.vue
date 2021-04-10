@@ -7,6 +7,11 @@
 <script>
 export default {
   transition: "slideUp",
+  head: {
+    style: [
+      { cssText: 'header { display: none}', type: 'text/css' }
+    ]
+  }
 }
 </script>
 
