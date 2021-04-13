@@ -35,10 +35,13 @@ a {
 }
 
 /* transitions */
-
 .home-leave-active,
-.home-enter-active {
-  transition: transform 0.5s;
+.home-enter-active,
+.quote-leave-active,
+.quote-leave-active section,
+.quote-leave-active header,
+.quote-enter-active {
+  transition: all .5s;
 }
 .home-leave-to {
   transform: translateY(-100vh);
@@ -48,5 +51,19 @@ a {
 }
 .home-enter-to {
   transform: translateY(0);
+}
+
+.quote-leave-active .quote {
+  transform: translateY(-25vh);
+  background-color: rgba(#483a1f, 0);
+}
+.quote-leave-active .sound {
+  transform: translateX(-100vw);
+}
+.quote-leave-active .video {
+  transform: translateX(100vw);
+}
+.quote-leave-active header {
+  height: 200px;
 }
 </style>

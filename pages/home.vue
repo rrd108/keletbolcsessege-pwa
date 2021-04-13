@@ -3,7 +3,7 @@
     <AppHeader />
     <main>
       <NuxtLink to="/quote">
-        <section>
+        <section class="quote">
           <h2>Napi bölcsesség</h2>
           <div><FontAwesomeIcon icon="book-open"></FontAwesomeIcon></div>
         </section>
