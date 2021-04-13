@@ -6,13 +6,8 @@
 
 <script>
 export default {
-  transition: "slideUp",
-  head: {
-    style: [
-      { cssText: 'header { display: none}', type: 'text/css' }
-    ]
-  }
-}
+  transition: 'index',
+};
 </script>
 
 <style scoped lang="scss">
@@ -37,14 +32,5 @@ div {
     padding: 0.5rem 2rem;
     margin-bottom: 6rem;
   }
-}
-
-.slideUp-enter-active,
-.slideUp-leave-active {
-  transition: transform 0.5s;
-}
-.slideUp-enter,
-.slideUp-leave-active {
-  transform: translateY(-100rem);
 }
 </style>

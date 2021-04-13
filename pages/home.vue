@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AppHeader />
     <main>
       <NuxtLink to="/quote">
         <section>
@@ -23,10 +24,8 @@
 
 <script>
 export default {
-  head: {
-    style: [{ cssText: "header { background-color: red !important}", type: "text/css" }],
-  },
-}
+  transition: {name: 'home', mode: 'out-in'}
+};
 </script>
 
 <style scoped lang="scss">
