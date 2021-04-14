@@ -2,15 +2,22 @@
   <header>
     <nav>
       <img src="~/assets/logo.png" alt="logo" />
+      <FontAwesomeIcon icon="book-open" v-show="title"></FontAwesomeIcon>
+      <FontAwesomeIcon icon="volume-up" v-show="title"></FontAwesomeIcon>
+      <FontAwesomeIcon icon="play-circle" v-show="title"></FontAwesomeIcon>
       <FontAwesomeIcon icon="cog"></FontAwesomeIcon>
     </nav>
-    <h2>{{ title }}</h2>
+    <section>
+      <h2>{{ title }}</h2>
+      <h4>{{ subtitle }}</h4>
+      <h3>{{ chapter }}</h3>
+    </section>
   </header>
 </template>
 
 <script>
 export default {
-  props: ['title'],
+  props: ['title', 'subtitle', 'chapter'],
 };
 </script>
 
@@ -23,6 +30,10 @@ header {
   mask-image: url('~assets/header-bg.svg');
   mask-position: bottom;
   mask-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   nav {
     display: flex;
@@ -39,11 +50,27 @@ header {
     }
   }
 
-  h2 {
-    font-size: 1.7rem;
-    font-weight: 500;
-    margin: 0 0 2rem 2rem; /* right margin = main padding: 1rem + section padding: 1rem +  */
-    color: #fff;
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1rem;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin: 0 0 .5rem 0;
+    }
+    h3 {
+      font-size: .85rem;
+      margin: 0;
+    }
+    h4 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 0 0 .25rem 0;
+    }
   }
 }
 </style>
