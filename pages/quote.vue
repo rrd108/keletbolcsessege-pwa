@@ -15,6 +15,7 @@
 <script>
 export default {
   transition: 'quote',
+  // TODO the quote should be get from the server randomly daily
 };
 </script>
 
