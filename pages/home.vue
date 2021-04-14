@@ -49,7 +49,7 @@ main {
 
     h2 {
       font-size: 1.7rem;
-      font-weight: 500;
+      font-weight: 700;
       margin: 0 0 2rem 0;
     }
 

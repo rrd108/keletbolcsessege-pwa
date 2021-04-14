@@ -24,6 +24,8 @@ button {
   background-repeat: no-repeat;
   background-position: center center;
   min-height: 100vh;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 svg {
@@ -32,6 +34,10 @@ svg {
 
 a {
   text-decoration: none;
+}
+
+main {
+  padding: 1rem;
 }
 
 /* transitions */
@@ -54,7 +60,7 @@ a {
 }
 
 .quote-leave-active .quote {
-  transform: translateY(-26.3vh);
+  transform: translate(-1rem, -21.3vh);
   background-color: rgba(#483a1f, 0);
 }
 .quote-leave-active .sound {
