@@ -20,6 +20,7 @@ export default {
 <style scoped>
 header {
   height: 200px;
+  background-color: #5ab1bb;
 }
 p {
   margin: 0;

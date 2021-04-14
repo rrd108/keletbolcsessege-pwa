@@ -54,7 +54,7 @@ a {
 }
 
 .quote-leave-active .quote {
-  transform: translateY(-25vh);
+  transform: translateY(-26.3vh);
   background-color: rgba(#483a1f, 0);
 }
 .quote-leave-active .sound {
@@ -65,5 +65,9 @@ a {
 }
 .quote-leave-active header {
   height: 200px;
+  background-color: #5ab1bb;
+}
+.quote-leave-active section div {
+  opacity: 0;
 }
 </style>
