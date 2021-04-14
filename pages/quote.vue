@@ -2,12 +2,14 @@
   <div>
     <AppHeader
       title="Napi bölcsesség"
-      subtitle="április 8."
+      :subtitle="today"
       chapter="Bhagavad-gita 2.48"
     />
     <main>
-      <p>Végezd kötelességed megingathatatlanul, óh, Arjuna, s ne ragaszkodj se a
-        sikerhez, se a kudarchoz! Az ilyen kiegyensúlyozottságot hívják yogának.</p>
+      <p>
+        Végezd kötelességed megingathatatlanul, óh, Arjuna, s ne ragaszkodj se a
+        sikerhez, se a kudarchoz! Az ilyen kiegyensúlyozottságot hívják yogának.
+      </p>
     </main>
   </div>
 </template>
@@ -15,6 +17,14 @@
 <script>
 export default {
   transition: 'quote',
+  data() {
+    return {
+      today: new Date().toLocaleDateString('hu-HU', {
+        month: 'long',
+        day: 'numeric',
+      }),
+    };
+  },
   // TODO the quote should be get from the server randomly daily
 };
 </script>
