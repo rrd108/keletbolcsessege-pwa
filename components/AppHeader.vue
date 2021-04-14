@@ -2,7 +2,9 @@
   <header>
     <nav>
       <img src="~/assets/logo.png" alt="logo" />
-      <FontAwesomeIcon icon="book-open" v-show="title"></FontAwesomeIcon>
+      <NuxtLink to="/quote">
+        <FontAwesomeIcon icon="book-open" v-show="title"></FontAwesomeIcon>
+      </NuxtLink>
       <FontAwesomeIcon icon="volume-up" v-show="title"></FontAwesomeIcon>
       <FontAwesomeIcon icon="play-circle" v-show="title"></FontAwesomeIcon>
       <FontAwesomeIcon icon="cog"></FontAwesomeIcon>
@@ -48,6 +50,18 @@ header {
     svg {
       margin-top: 0.1rem;
     }
+
+    a.nuxt-link-exact-active::after {
+      content: '';
+      width: .5rem;
+      height: .5rem;
+      background: #ede0c5;
+      display: inline-block;
+      border-radius: 50%;
+      position: relative;
+      top: 1rem;
+      left: -1.4rem;
+    }
   }
 
   section {
@@ -60,16 +74,16 @@ header {
     h2 {
       font-size: 1.7rem;
       font-weight: 700;
-      margin: 0 0 .5rem 0;
+      margin: 0 0 0.5rem 0;
     }
     h3 {
-      font-size: .85rem;
+      font-size: 0.85rem;
       margin: 0;
     }
     h4 {
       font-size: 0.85rem;
       font-weight: 500;
-      margin: 0 0 .25rem 0;
+      margin: 0 0 0.25rem 0;
     }
   }
 }
