@@ -51,7 +51,11 @@ export default {
     }
   },
   created() {
-    // TODO if the user listened something earlier than start from there
+    // TODO localStorage is not existing on server side, so it will fail
+    if (localStorage.getItem('KrisnaNet.currentChapter')) {
+      this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter')
+      this.current.text = localStorage.getItem('KrisnaNet.currentText')
+    }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     this.audio = new Audio(
       `${this.link}BG_${
@@ -78,6 +82,8 @@ export default {
     playNext() {
       // TODO check if the next is a special number
       // TODO is the current text is the last one in the chapter
+      localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
+      localStorage.setItem('KrisnaNet.currentText', this.current.text)
       this.current.text++
       this.audio.src = `${this.link}BG_${
         this.current.chapter
