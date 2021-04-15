@@ -5,7 +5,9 @@
       <NuxtLink to="/quote">
         <FontAwesomeIcon icon="book-open" v-show="title"></FontAwesomeIcon>
       </NuxtLink>
-      <FontAwesomeIcon icon="volume-up" v-show="title"></FontAwesomeIcon>
+      <NuxtLink to="/bhagavad-gita">
+        <FontAwesomeIcon icon="volume-up" v-show="title"></FontAwesomeIcon>
+      </NuxtLink>
       <FontAwesomeIcon icon="play-circle" v-show="title"></FontAwesomeIcon>
       <FontAwesomeIcon icon="cog"></FontAwesomeIcon>
     </nav>
@@ -53,8 +55,8 @@ header {
 
     a.nuxt-link-exact-active::after {
       content: '';
-      width: .5rem;
-      height: .5rem;
+      width: 0.5rem;
+      height: 0.5rem;
       background: #ede0c5;
       display: inline-block;
       border-radius: 50%;
