@@ -60,7 +60,7 @@ main {
 }
 
 .quote-leave-active .quote {
-  transform: translate(-1rem, -21.3vh);
+  transform: translate(-1rem, -24.9vh);
   background-color: rgba(#483a1f, 0);
 }
 .quote-leave-active .sound {
@@ -76,4 +76,5 @@ main {
 .quote-leave-active section div {
   opacity: 0;
 }
+
 </style>
