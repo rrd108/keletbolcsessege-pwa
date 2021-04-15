@@ -33,6 +33,8 @@
 </template>
 
 <script>
+// TODO add methods for previous and next icons of the remote
+// TODO let the user choose a chapter
 export default {
   data() {
     return {
