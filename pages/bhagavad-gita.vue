@@ -59,6 +59,7 @@ export default {
       this.current.text = localStorage.getItem('KrisnaNet.currentText')
     }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+    // TODO Audio not exist at server side, so it will fail
     this.audio = new Audio(
       `${this.link}BG_${
         this.current.chapter
