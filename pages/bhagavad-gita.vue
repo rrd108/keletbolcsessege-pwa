@@ -151,6 +151,7 @@ section {
 h5 {
   margin: 0;
   text-align: center;
+  font-weight: 500;
 }
 h6 {
   margin: 0;
