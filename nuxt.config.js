@@ -10,18 +10,14 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -32,17 +28,26 @@ export default {
       '@nuxtjs/fontawesome',
       {
         icons: {
-          solid: ['faBookOpen', 'faCog', 'faPlayCircle', 'faVolumeUp']
+          solid: [
+            'faBackward',
+            'faBookOpen',
+            'faCog',
+            'faForward',
+            'faPause',
+            'faPlay',
+            'faPlayCircle',
+            'faVolumeUp'
+          ]
         }
       }
     ],
-    '@nuxtjs/google-fonts',
+    '@nuxtjs/google-fonts'
   ],
 
   googleFonts: {
-  families: {
-    Montserrat: [100, 500, 700],
-    },
+    families: {
+      Montserrat: [100, 500, 700]
+    }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -50,7 +55,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,6 +69,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
-}
+  build: {}
+};
