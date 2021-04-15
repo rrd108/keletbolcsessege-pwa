@@ -3,7 +3,7 @@
     <AppHeader
       title="Bhagavad-gita"
       subtitle="hangoskönyv"
-      chapter="1. fejezet"
+      :chapter="current.chapter + '. fejezet'"
     />
     <main>
       <section id="icon" :class="{ playing: playing }">
@@ -26,8 +26,8 @@
         <FontAwesomeIcon icon="forward"></FontAwesomeIcon>
       </section>
 
-      <h5>4. vers</h5>
-      <h6 :style="`width: ${currentTimePercent}%`"></h6>
+      <h5>{{ text }}</h5>
+      <h6 :style="`width: ${trackPosition}%`"></h6>
     </main>
   </div>
 </template>
@@ -43,31 +43,57 @@ export default {
           [0, '42-43', 72],
         ],
       },
-      currentTimePercent: 0,
+      current: { chapter: 1, text: 0 },
+      trackPosition: 0,
       link: 'https://krisna.hu/bhagavad-gita/',
       playing: false,
-    };
+      text: null,
+    }
   },
   created() {
-    this.audio = new Audio('https://krisna.hu/bhagavad-gita/BG_1_00.mp3'),    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-    this.audio.addEventListener('timeupdate', this.playback)
+    // TODO if the user listened something earlier than start from there
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+    this.audio = new Audio(
+      `${this.link}BG_${
+        this.current.chapter
+      }_${this.current.text.toString().padStart(2, 0)}.mp3`
+    )
+    this.audio.addEventListener('timeupdate', this.calculatetrackPosition)
+    this.audio.addEventListener('ended', this.playNext)
+    this.setText()
   },
   methods: {
+    calculatetrackPosition(event) {
+      const { currentTime, duration } = event.path[0]
+      this.trackPosition = (currentTime / duration) * 100
+    },
     play() {
       if (this.playing) {
         this.playing = false
         this.audio.pause()
         return
       }
+      this.startPlay()
+    },
+    playNext() {
+      // TODO check if the next is a special number
+      // TODO is the current text is the last one in the chapter
+      this.current.text++
+      this.audio.src = `${this.link}BG_${
+        this.current.chapter
+      }_${this.current.text.toString().padStart(2, 0)}.mp3`
+      this.startPlay()
+    },
+    setText() {
+      this.text = this.current.text ? `${this.current.text}. vers` : 'bevezetés'
+    },
+    startPlay() {
       this.playing = true
       this.audio.play()
+      this.setText()
     },
-    playback(event) {
-      const {currentTime, duration} = event.path[0]
-      this.currentTimePercent = currentTime / duration * 100
-    }
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
