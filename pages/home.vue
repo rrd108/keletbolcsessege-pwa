@@ -9,10 +9,12 @@
         </section>
       </NuxtLink>
 
-      <section class="sound">
-        <h2>Bhagavad-gita</h2>
-        <div><FontAwesomeIcon icon="volume-up"></FontAwesomeIcon></div>
-      </section>
+      <NuxtLink to="/bhagavad-gita">
+        <section class="sound">
+          <h2>Bhagavad-gita</h2>
+          <div><FontAwesomeIcon icon="volume-up"></FontAwesomeIcon></div>
+        </section>
+      </NuxtLink>
 
       <section class="video">
         <h2>Sivarama Swami</h2>
@@ -24,7 +26,7 @@
 
 <script>
 export default {
-  transition: {name: 'home', mode: 'out-in'}
+  transition: { name: 'home', mode: 'out-in' },
 };
 </script>
 
