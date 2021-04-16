@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <img src="~/assets/logo.png" alt="logo" />
+      <NuxtLink to="/home"><img src="~/assets/logo.png" alt="logo" /></NuxtLink>
       <NuxtLink to="/quote">
         <FontAwesomeIcon icon="book-open" v-show="title"></FontAwesomeIcon>
       </NuxtLink>
@@ -53,7 +53,7 @@ header {
       margin-top: 0.1rem;
     }
 
-    a.nuxt-link-exact-active::after {
+    a.nuxt-link-exact-active:not(:first-child)::after {
       content: '';
       width: 0.5rem;
       height: 0.5rem;
