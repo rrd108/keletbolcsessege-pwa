@@ -33,8 +33,8 @@
 </template>
 
 <script>
-// TODO add methods for previous and next icons of the remote
-// TODO let the user choose a chapter
+// TODO add methods for previous and next icons of the remote #16
+// TODO let the user choose a chapter #17
 export default {
   data() {
     return {
@@ -53,13 +53,13 @@ export default {
     }
   },
   created() {
-    // TODO localStorage is not existing on server side, so it will fail
+    // TODO localStorage is not existing on server side, so it will fail #18
     if (localStorage.getItem('KrisnaNet.currentChapter')) {
       this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter')
       this.current.text = localStorage.getItem('KrisnaNet.currentText')
     }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-    // TODO Audio not exist at server side, so it will fail
+    // TODO Audio not exist at server side, so it will fail #19
     this.audio = new Audio(
       `${this.link}BG_${
         this.current.chapter
@@ -83,8 +83,8 @@ export default {
       this.startPlay()
     },
     playNext() {
-      // TODO check if the next is a special number
-      // TODO is the current text is the last one in the chapter
+      // TODO check if the next is a special number #20
+      // TODO is the current text is the last one in the chapter #21
       localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
       localStorage.setItem('KrisnaNet.currentText', this.current.text)
       this.current.text++

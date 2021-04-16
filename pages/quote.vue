@@ -25,7 +25,7 @@ export default {
       }),
     };
   },
-  // TODO the quote should be get from the server randomly daily
+  // TODO the quote should be get from the server randomly daily #6
 };
 </script>
 
