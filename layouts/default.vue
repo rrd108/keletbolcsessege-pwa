@@ -24,7 +24,7 @@ button {
   background-repeat: no-repeat;
   background-position: center center;
   min-height: 100vh;
-  max-width: 1024px;
+  max-width: 450px;
   margin: 0 auto;
 }
 
