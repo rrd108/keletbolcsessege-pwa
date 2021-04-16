@@ -18,7 +18,7 @@ button {
 
 #app {
   font-size: 2rem;
-  color: #483a1f;
+  color: $primary;
   background-image: url('~/assets/background.png');
   background-size: 35rem;
   background-repeat: no-repeat;
@@ -61,7 +61,7 @@ main {
 
 .quote-leave-active .quote {
   transform: translate(-1rem, -24.9vh);
-  background-color: rgba(#483a1f, 0);
+  background-color: rgba($primary, 0);
 }
 .quote-leave-active .sound {
   transform: translateX(-100vw);
@@ -71,7 +71,7 @@ main {
 }
 .quote-leave-active header {
   height: 200px;
-  background-color: #5ab1bb;
+  background-color: $block-one;
 }
 .quote-leave-active section div {
   opacity: 0;

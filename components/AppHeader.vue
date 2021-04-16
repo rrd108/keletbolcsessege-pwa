@@ -30,7 +30,7 @@ export default {
 header {
   height: 65px;
   /* mask used as we want to color the background svg */
-  background-color: #483a1d;
+  background-color: $primary;
   mask-image: url('~assets/header-bg.svg');
   mask-position: bottom;
   mask-repeat: no-repeat;

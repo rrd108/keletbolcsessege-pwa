@@ -108,7 +108,7 @@ export default {
 <style scoped lang="scss">
 header {
   height: 200px;
-  background-color: #094d92;
+  background-color: $block-two;
 }
 
 svg {
@@ -158,7 +158,7 @@ h5 {
 }
 h6 {
   margin: 0;
-  background-color: #483a1f;
+  background-color: $primary;
   height: 0.25rem;
 }
 </style>

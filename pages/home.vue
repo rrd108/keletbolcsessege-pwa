@@ -35,18 +35,18 @@ main {
   padding: 1rem;
 
   section {
-    background-color: #5ab1bb;
+    background-color: $block-one;
     color: #fff;
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
 
     &.sound {
-      background-color: #094d92;
+      background-color: $block-two;
     }
 
     &.video {
-      background-color: #861388;
+      background-color: $block-three;
     }
 
     h2 {

@@ -23,16 +23,16 @@ export default {
         month: 'long',
         day: 'numeric',
       }),
-    };
+    }
   },
   // TODO the quote should be get from the server randomly daily #6
-};
+}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 header {
   height: 200px;
-  background-color: #5ab1bb;
+  background-color: $block-one;
 }
 p {
   font-size: 1.7rem;
