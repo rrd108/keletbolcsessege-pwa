@@ -43,10 +43,10 @@ main {
 /* transitions */
 .home-leave-active,
 .home-enter-active,
-.quote-leave-active,
-.quote-leave-active section,
-.quote-leave-active header,
-.quote-enter-active {
+.take-apart-leave-active,
+.take-apart-leave-active section,
+.take-apart-leave-active header,
+.take-apart-enter-active {
   transition: all .5s;
 }
 .home-leave-to {
@@ -59,22 +59,21 @@ main {
   transform: translateY(0);
 }
 
-.quote-leave-active .quote {
-  transform: translate(-1rem, -24.9vh);
-  background-color: rgba($primary, 0);
-}
-.quote-leave-active .sound {
-  transform: translateX(-100vw);
-}
-.quote-leave-active .video {
-  transform: translateX(100vw);
-}
-.quote-leave-active header {
-  height: 200px;
-  background-color: $block-one;
-}
-.quote-leave-active section div {
+.take-apart-leave-active .quote {
+  //background-color: rgba($primary, 0);
   opacity: 0;
 }
-
+.take-apart-leave-active .sound {
+  transform: translateX(-100vw);
+}
+.take-apart-leave-active .video {
+  transform: translateX(100vw);
+}
+.take-apart-leave-active header {
+  height: 200px;
+  background-color: $block-one; // TODO or 2 or 3
+}
+.take-apart-leave-active section div {
+  opacity: 0;
+}
 </style>

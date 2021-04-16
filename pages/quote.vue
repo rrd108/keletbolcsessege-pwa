@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  transition: 'quote',
+  transition: 'take-apart',
   data() {
     return {
       today: new Date().toLocaleDateString('hu-HU', {
