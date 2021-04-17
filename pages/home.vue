@@ -16,10 +16,12 @@
         </section>
       </NuxtLink>
 
-      <section class="video">
-        <h2>Sivarama Swami</h2>
-        <div><FontAwesomeIcon icon="play-circle"></FontAwesomeIcon></div>
-      </section>
+      <NuxtLink to="/vlog">
+        <section class="video">
+          <h2>Sivarama Swami</h2>
+          <div><FontAwesomeIcon icon="play-circle"></FontAwesomeIcon></div>
+        </section>
+      </NuxtLink>
     </main>
   </div>
 </template>
@@ -27,7 +29,7 @@
 <script>
 export default {
   transition: 'home',
-};
+}
 </script>
 
 <style scoped lang="scss">
