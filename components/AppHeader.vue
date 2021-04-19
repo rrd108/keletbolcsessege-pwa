@@ -82,10 +82,6 @@ header {
       font-size: 1.7rem;
       font-weight: 700;
       margin: 0 0 0.5rem 0;
-      // we need absolute position so we can move the titles to this exact position
-      position: absolute;
-      top: $title-top;
-      left: $title-left;
     }
     h3 {
       font-size: 0.85rem;

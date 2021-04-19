@@ -48,5 +48,10 @@ p {
     background-color: $primary;
     height: $header-closed-height;
  }
+ main {
+   section {
+     transform: translate(0);
+   }
+ }
 }
 </style>

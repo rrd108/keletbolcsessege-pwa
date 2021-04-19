@@ -47,27 +47,19 @@ main {
 .home-leave-active,
 .home-enter-active,
 .take-apart-leave-active,
-.take-apart-leave-active section,
 .take-apart-leave-active h2,
 .take-apart-leave-active .block-title,
 .take-apart-enter-active,
 header,
 header *,
-main {
+main,
+main section {
   transition: all $transition-length ease-in-out;
 }
 
 .take-apart-leave-to section,
 .take-apart-leave-to h2 {
   opacity: 0;
-}
-
-.take-apart-leave-to.quote #quote-title,
-.take-apart-leave-to.bhagavad-gita #bhagavad-gita-title,
-.take-apart-leave-to.vlog #vlog-title {
-  top: $title-top;
-  left: $title-left;
-  opacity: 1;
 }
 
 .take-apart-leave-active main {
@@ -89,7 +81,6 @@ main {
   }
 }
 
-// TODO change which one goes where based on the selected item?
 .take-apart-leave-to .bhagavad-gita {
   transform: translateX(-100vw);
 }
@@ -116,27 +107,13 @@ main {
   if they are in the page file, the transition will not work
   because the css there is later than this, so values will be overwritten
 */
-.block-title {
-  position: absolute;
-  z-index: 1;
-  left: 1.2em;
-}
 section.quote {
   background-color: $block-one;
-}
-#quote-title {
-  top: 3.5em;
 }
 section.bhagavad-gita {
   background-color: $block-two;
 }
-#bhagavad-gita-title {
-  top: 9.2em;
-}
 section.vlog {
   background-color: $block-three;
-}
-#vlog-title {
-  top: 14.9em;
 }
 </style>

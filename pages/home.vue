@@ -3,22 +3,22 @@
     <AppHeader />
     <main>
       <NuxtLink to="/quote">
-        <h2 class="block-title" id="quote-title">Napi bölcsesség</h2>
         <section class="quote">
+          <h2 class="block-title" id="quote-title">Napi bölcsesség</h2>
           <div><FontAwesomeIcon icon="book-open"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
 
       <NuxtLink to="/bhagavad-gita">
-        <h2 class="block-title" id="bhagavad-gita-title">Bhagavad-gita</h2>
         <section class="bhagavad-gita">
+          <h2 class="block-title" id="bhagavad-gita-title">Bhagavad-gita</h2>
           <div><FontAwesomeIcon icon="volume-up"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
 
       <NuxtLink to="/vlog">
-        <h2 class="block-title" id="vlog-title">Sivarama Swami</h2>
         <section class="vlog">
+          <h2 class="block-title" id="vlog-title">Sivarama Swami</h2>
           <div><FontAwesomeIcon icon="play-circle"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
@@ -53,8 +53,22 @@ main {
     div {
       display: flex;
       justify-content: flex-end;
-      margin-top: 2em;
     }
   }
+}
+
+.home-enter main {
+  section {
+    opacity: 0;
+  }
+  .vlog {
+    transform: translateX(100vw);
+  }
+  .bhagavad-gita {
+    transform: translateX(-100vw);
+  }
+}
+.take-apart-leave-active main {
+  animation: none;
 }
 </style>
