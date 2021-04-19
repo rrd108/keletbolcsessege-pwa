@@ -64,9 +64,10 @@ main {
     }
   }
 }
-
-.home-leave-active header {
-  background-color: $primary;
-  height: $header-closed-height;
+.home-leave-to {
+  header {
+    background-color: $primary;
+    height: $header-closed-height;
+  }
 }
 </style>

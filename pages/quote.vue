@@ -33,15 +33,20 @@ export default {
 header {
   height: $header-open-height;
   background-color: $block-one;
+
+  section {
+    opacity: 1;
+  }
 }
 p {
   font-size: 1.7rem;
   line-height: 2.7rem;
   margin: 0;
 }
-
-.home-leave-to header {
-  background-color: $primary;
-  height: $header-closed-height;
+.home-leave-to {
+  header {
+    background-color: $primary;
+    height: $header-closed-height;
+ }
 }
 </style>

@@ -52,6 +52,7 @@ main {
 .take-apart-leave-active .block-title,
 .take-apart-enter-active,
 header,
+header *,
 main {
   transition: all $transition-length ease-in-out;
 }
@@ -76,7 +77,9 @@ main {
   animation: shrink-flip $transition-length ease reverse forwards;
 }
 @keyframes shrink-flip {
-  50%, 75%, 100% {
+  50%,
+  75%,
+  100% {
     transform: scale(0.95) translateY(1em);
     transform-origin: top;
     box-shadow: 0.1rem 0.1rem 1rem unquote($primary + '30');

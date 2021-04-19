@@ -98,4 +98,12 @@ header {
     }
   }
 }
+
+.home-leave-to {
+  header {
+    nav a:not(:first-child), section {
+      opacity: 0;
+    }
+  }
+}
 </style>

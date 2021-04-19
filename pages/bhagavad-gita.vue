@@ -162,11 +162,11 @@ h6 {
   background-color: $primary;
   height: 0.25rem;
 }
-
-.home-leave-active {
+.home-leave-to {
   header {
     background-color: $primary;
     height: $header-closed-height;
-  }
+ }
 }
+
 </style>
