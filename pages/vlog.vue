@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  transition: 'take-apart',
   // TODO add pager #22
   // TODO start video automatically #23
   async asyncData({ params, $axios }) {
@@ -47,7 +48,7 @@ export default {
 
 <style scoped lang="scss">
 header {
-  height: 200px;
+  height: $header-open-height;
   background-color: $block-three;
 }
 main {
@@ -62,5 +63,10 @@ main {
       font-size: 0.85rem;
     }
   }
+}
+
+.home-leave-active header {
+  background-color: $primary;
+  height: $header-closed-height;
 }
 </style>

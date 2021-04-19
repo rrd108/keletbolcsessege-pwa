@@ -3,22 +3,22 @@
     <AppHeader />
     <main>
       <NuxtLink to="/quote">
+        <h2 class="block-title" id="quote-title">Napi bölcsesség</h2>
         <section class="quote">
-          <h2>Napi bölcsesség</h2>
           <div><FontAwesomeIcon icon="book-open"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
 
       <NuxtLink to="/bhagavad-gita">
-        <section class="sound">
-          <h2>Bhagavad-gita</h2>
+        <h2 class="block-title" id="bhagavad-gita-title">Bhagavad-gita</h2>
+        <section class="bhagavad-gita">
           <div><FontAwesomeIcon icon="volume-up"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
 
       <NuxtLink to="/vlog">
-        <section class="video">
-          <h2>Sivarama Swami</h2>
+        <h2 class="block-title" id="vlog-title">Sivarama Swami</h2>
+        <section class="vlog">
           <div><FontAwesomeIcon icon="play-circle"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
@@ -28,38 +28,38 @@
 
 <script>
 export default {
-  transition: 'home',
+  transition: {
+    name: 'home',
+    beforeLeave(element) {
+      // add a css className to the element for manipulating the header bg color
+      element.classList.add(this.routerViewKey.replace(/\//, ''))
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
 main {
-  padding: 1rem;
+  padding: 0.5em;
 
-  section {
-    background-color: $block-one;
+  a {
     color: #fff;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+  }
+  section {
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
 
-    &.sound {
-      background-color: $block-two;
-    }
-
-    &.video {
-      background-color: $block-three;
-    }
-
-    h2 {
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin: 0 0 2rem 0;
-    }
-
     div {
       display: flex;
       justify-content: flex-end;
+      margin-top: 2em;
     }
   }
 }

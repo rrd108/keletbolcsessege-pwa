@@ -4,12 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  transition: 'index',
-};
-</script>
-
 <style scoped lang="scss">
 div {
   display: flex;
@@ -23,7 +17,7 @@ div {
 
   a {
     background-color: #483a1d;
-    color: #ede0c5;
+    color: $secondary;
     text-decoration: none;
     font-size: 2rem;
     font-weight: 500;

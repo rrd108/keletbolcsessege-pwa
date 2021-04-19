@@ -31,12 +31,17 @@ export default {
 
 <style scoped lang="scss">
 header {
-  height: 200px;
+  height: $header-open-height;
   background-color: $block-one;
 }
 p {
   font-size: 1.7rem;
   line-height: 2.7rem;
   margin: 0;
+}
+
+.home-leave-active header {
+  background-color: $primary;
+  height: $header-closed-height;
 }
 </style>

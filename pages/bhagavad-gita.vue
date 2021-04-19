@@ -36,6 +36,7 @@
 // TODO add methods for previous and next icons of the remote #16
 // TODO let the user choose a chapter #17
 export default {
+  transition: 'take-apart',
   data() {
     return {
       audio: null,
@@ -107,7 +108,7 @@ export default {
 
 <style scoped lang="scss">
 header {
-  height: 200px;
+  height: $header-open-height;
   background-color: $block-two;
 }
 
@@ -160,5 +161,12 @@ h6 {
   margin: 0;
   background-color: $primary;
   height: 0.25rem;
+}
+
+.home-leave-active {
+  header {
+    background-color: $primary;
+    height: $header-closed-height;
+  }
 }
 </style>

@@ -24,13 +24,13 @@
 <script>
 export default {
   props: ['title', 'subtitle', 'chapter'],
-};
+}
 </script>
 
 
 <style lang="scss">
 header {
-  height: 65px;
+  height: $header-closed-height;
   /* mask used as we want to color the background svg */
   background-color: $primary;
   mask-image: url('~assets/header-bg.svg');
@@ -40,6 +40,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position:relative;
 
   nav {
     display: flex;
@@ -55,16 +56,18 @@ header {
       margin-top: 0.1rem;
     }
 
-    a.nuxt-link-exact-active:not(:first-child)::after {
+    a:not(:first-child)::after {
       content: '';
-      width: 0.5rem;
-      height: 0.5rem;
-      background: #ede0c5;
+      width: 0.2em;
+      height: 0.2em;
       display: inline-block;
       border-radius: 50%;
       position: relative;
       top: 1rem;
-      left: -1.4rem;
+      left: -50%;
+    }
+    a.nuxt-link-exact-active:not(:first-child)::after {
+      background: $secondary;
     }
   }
 
@@ -79,6 +82,10 @@ header {
       font-size: 1.7rem;
       font-weight: 700;
       margin: 0 0 0.5rem 0;
+      // we need absolute position so we can move the titles to this exact position
+      position: absolute;
+      top: $title-top;
+      left: $title-left;
     }
     h3 {
       font-size: 0.85rem;
