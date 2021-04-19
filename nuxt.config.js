@@ -70,7 +70,8 @@ export default {
   pwa: {
     manifest: {
       lang: 'hu',
-      background_color: '#ede0c5'
+      background_color: '#ede0c5',
+      orientation: 'portrait'
     }
   },
 
