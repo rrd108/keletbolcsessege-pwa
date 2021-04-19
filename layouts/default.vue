@@ -22,7 +22,7 @@ button {
   background-image: url('~/assets/background.png');
   background-size: 35rem;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top;
   min-height: 100vh;
   max-width: 450px;
   margin: 0 auto;
