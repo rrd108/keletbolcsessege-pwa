@@ -48,10 +48,12 @@ main {
 .home-enter-active,
 .take-apart-leave-active,
 .take-apart-leave-active section,
+.take-apart-leave-active h2,
 .take-apart-leave-active .block-title,
 .take-apart-enter-active,
-header {
-  transition: all 350ms ease-in-out;
+header,
+main {
+  transition: all $transition-length ease-in-out;
 }
 
 .take-apart-leave-to section,
@@ -65,6 +67,23 @@ header {
   top: $title-top;
   left: $title-left;
   opacity: 1;
+}
+
+.take-apart-leave-active main {
+  animation: shrink-flip $transition-length ease forwards;
+}
+.take-apart-enter-active main {
+  animation: shrink-flip $transition-length ease reverse forwards;
+}
+@keyframes shrink-flip {
+  50%,
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0.1rem 0.1rem 1rem unquote($primary + '30'), -0.1rem -0.1rem 1rem unquote($primary + '30');
+  }
+  100% {
+    transform: rotateY(-90deg);
+  }
 }
 
 // TODO change which one goes where based on the selected item?
