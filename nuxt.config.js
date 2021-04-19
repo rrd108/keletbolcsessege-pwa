@@ -75,6 +75,14 @@ export default {
     }
   },
 
+  // defualt transition properties
+  pageTransition: {
+    beforeLeave(element) {
+      // add a css className to the element for manipulating the header bg color
+      element.classList.add(this.routerViewKey.replace(/\//, ''))
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}
 }

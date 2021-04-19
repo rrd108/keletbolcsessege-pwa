@@ -28,13 +28,7 @@
 
 <script>
 export default {
-  transition: {
-    name: 'home',
-    beforeLeave(element) {
-      // add a css className to the element for manipulating the header bg color
-      element.classList.add(this.routerViewKey.replace(/\//, ''))
-    },
-  },
+  transition: 'home',
 }
 </script>
 
