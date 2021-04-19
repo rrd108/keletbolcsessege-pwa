@@ -40,7 +40,7 @@ p {
   margin: 0;
 }
 
-.home-leave-active header {
+.home-leave-to header {
   background-color: $primary;
   height: $header-closed-height;
 }

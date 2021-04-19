@@ -41,6 +41,9 @@ main {
 }
 
 /* transitions */
+// enter-active, leave-active
+// enter, leave-to
+
 .home-leave-active,
 .home-enter-active,
 .take-apart-leave-active,
@@ -51,39 +54,39 @@ header {
   transition: all 350ms ease-in-out;
 }
 
-.take-apart-leave-active section,
-.take-apart-leave-active h2 {
+.take-apart-leave-to section,
+.take-apart-leave-to h2 {
   opacity: 0;
 }
 
-.take-apart-leave-active.quote #quote-title,
-.take-apart-leave-active.bhagavad-gita #bhagavad-gita-title,
-.take-apart-leave-active.vlog #vlog-title {
+.take-apart-leave-to.quote #quote-title,
+.take-apart-leave-to.bhagavad-gita #bhagavad-gita-title,
+.take-apart-leave-to.vlog #vlog-title {
   top: $title-top;
   left: $title-left;
   opacity: 1;
 }
 
-// TODO
-/*.take-apart-leave-active .bhagavad-gita {
+// TODO change which one goes where based on the selected item?
+.take-apart-leave-to .bhagavad-gita {
   transform: translateX(-100vw);
 }
-.take-apart-leave-active .vlog {
+.take-apart-leave-to .vlog {
   transform: translateX(100vw);
-}*/
-.take-apart-leave-active header {
+}
+.take-apart-leave-to header {
   height: $header-open-height;
 }
-.take-apart-leave-active.quote header {
+.take-apart-leave-to.quote header {
   background-color: $block-one;
 }
-.take-apart-leave-active.bhagavad-gita header {
+.take-apart-leave-to.bhagavad-gita header {
   background-color: $block-two;
 }
-.take-apart-leave-active.vlog header {
+.take-apart-leave-to.vlog header {
   background-color: $block-three;
 }
-.take-apart-leave-active section div {
+.take-apart-leave-to section div {
   opacity: 0;
 }
 /*
