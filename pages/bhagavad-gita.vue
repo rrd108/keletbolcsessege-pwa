@@ -59,14 +59,15 @@ export default {
       this.current.text = localStorage.getItem('KrisnaNet.currentText')
     }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-    // TODO Audio not exist at server side, so it will fail #19
-    this.audio = new Audio(
-      `${this.link}BG_${
-        this.current.chapter
-      }_${this.current.text.toString().padStart(2, 0)}.mp3`
-    )
-    this.audio.addEventListener('timeupdate', this.calculatetrackPosition)
-    this.audio.addEventListener('ended', this.playNext)
+    if (process.client) {
+      this.audio = new Audio(
+        `${this.link}BG_${
+          this.current.chapter
+        }_${this.current.text.toString().padStart(2, 0)}.mp3`
+      )
+      this.audio.addEventListener('timeupdate', this.calculatetrackPosition)
+      this.audio.addEventListener('ended', this.playNext)
+    }
     this.setText()
   },
   methods: {
