@@ -76,11 +76,13 @@ export default {
     },
     getNext() {
       //handle speacial text numbers
-      let nextNumber = parseInt(this.current.textNumber) + 1
+      let nextNumber
 
       // if the current is a speacial one
       if (this.current.textNumber.indexOf('-') != -1) {
         nextNumber = parseInt(this.current.textNumber.split('-')[1]) + 1
+      } else {
+        nextNumber = parseInt(this.current.textNumber) + 1
       }
 
       if (
