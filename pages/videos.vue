@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppHeader title="Sivarama Swami" subtitle="vlog" chapter="Videók" />
+    <AppHeader title="Videók" subtitle="Sivarama Swami, Krisna.hu" chapter="Legfrisebb" />
     <main>
       <section v-for="video in videos" :key="video.snippet.resourceId.videoId">
         <img

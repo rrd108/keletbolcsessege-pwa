@@ -16,9 +16,9 @@
         </section>
       </NuxtLink>
 
-      <NuxtLink to="/vlog">
-        <section class="vlog">
-          <h2 class="block-title" id="vlog-title">Sivarama Swami</h2>
+      <NuxtLink to="/videos">
+        <section class="videos">
+          <h2 class="block-title" id="videos-title">Videók</h2>
           <div><FontAwesomeIcon icon="play-circle"></FontAwesomeIcon></div>
         </section>
       </NuxtLink>
@@ -61,7 +61,7 @@ main {
   section {
     opacity: 0;
   }
-  .vlog {
+  .videos {
     transform: translateX(100vw);
   }
   .bhagavad-gita {

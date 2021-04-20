@@ -8,7 +8,7 @@
       <NuxtLink to="/bhagavad-gita">
         <FontAwesomeIcon icon="volume-up" v-show="title"></FontAwesomeIcon>
       </NuxtLink>
-      <NuxtLink to="/vlog">
+      <NuxtLink to="/videos">
         <FontAwesomeIcon icon="play-circle" v-show="title"></FontAwesomeIcon>
       </NuxtLink>
       <FontAwesomeIcon icon="cog"></FontAwesomeIcon>

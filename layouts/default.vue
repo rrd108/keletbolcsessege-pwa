@@ -84,7 +84,7 @@ main section {
 .take-apart-leave-to .bhagavad-gita {
   transform: translateX(-100vw);
 }
-.take-apart-leave-to .vlog {
+.take-apart-leave-to .videos {
   transform: translateX(100vw);
 }
 .take-apart-leave-to header {
@@ -96,7 +96,7 @@ main section {
 .take-apart-leave-to.bhagavad-gita header {
   background-color: $block-two;
 }
-.take-apart-leave-to.vlog header {
+.take-apart-leave-to.videos header {
   background-color: $block-three;
 }
 .take-apart-leave-to section div {
@@ -113,7 +113,7 @@ section.quote {
 section.bhagavad-gita {
   background-color: $block-two;
 }
-section.vlog {
+section.videos {
   background-color: $block-three;
 }
 </style>
