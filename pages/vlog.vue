@@ -2,10 +2,7 @@
   <div>
     <AppHeader title="Sivarama Swami" subtitle="vlog" chapter="Videók" />
     <main>
-      <section
-        v-for="video in videos.items"
-        :key="video.snippet.resourceId.videoId"
-      >
+      <section v-for="video in videos" :key="video.snippet.resourceId.videoId">
         <img
           v-if="selectedVideoId != video.snippet.resourceId.videoId"
           :src="video.snippet.thumbnails.medium.url"
@@ -31,11 +28,21 @@ export default {
   transition: 'take-apart',
   // TODO add pager #22
   // TODO start video automatically #23
-  async asyncData({ params, $axios }) {
+  async asyncData({ $axios }) {
+    const playlists = [
+      /*SRS/vlog*/ 'PL0drUyRdPzXNNqBbLYC4RrWDvY7QhMcIJ',
+      /*krisnahu/krisnaNews*/ 'PLR1elb3e5EBlgvOhgCsfoMRf3BgFu7NOx',
+    ]
+    const results = 5
     const apiKey = process.env.KRISNANET_GOOGLE_APIKEY
-    const videos = await $axios.$get(
-      `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PL0drUyRdPzXNNqBbLYC4RrWDvY7QhMcIJ&key=${apiKey}`
+    const videoLists = await Promise.all(
+      playlists.map((playlist) =>
+        $axios.$get(
+          `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${results}&playlistId=${playlist}&key=${apiKey}`
+        )
+      )
     )
+    const videos = [...videoLists[0].items, ...videoLists[1].items].sort((a,b) => (a.publishedAt > b.publishedAt) ? 1 : -1)
     return { videos, selectedVideoId: null }
   },
   methods: {
