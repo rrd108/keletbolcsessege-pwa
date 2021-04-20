@@ -20,14 +20,25 @@
         <FontAwesomeIcon
           icon="pause"
           class="middle-button"
-          @click="play"
+          @click="pause"
           v-show="playing"
         ></FontAwesomeIcon>
         <FontAwesomeIcon icon="forward"></FontAwesomeIcon>
       </section>
 
       <h6><span :style="`width: ${trackPosition}%`"> </span></h6>
-      <h5>{{ text }}</h5>
+      <h5>
+        <select v-model="current.chapter" @change="current.textNumber = 0">
+          <option
+            v-for="(chapter, index) in bg"
+            :key="index"
+            :value="index + 1"
+          >
+            {{ index + 1 }}. fejezet
+          </option>
+        </select>
+        <span>{{ text }}</span>
+      </h5>
     </main>
   </div>
 </template>
@@ -40,12 +51,10 @@ export default {
   data() {
     return {
       audio: null,
-      bg: {
-        texts: [
-          { 16: 18, 21: 22, 37: 38, 46: 'last' },
-          { 42: 43, 72: 'last' },
-        ],
-      },
+      bg: [
+        { 16: 18, 21: 22, 37: 38, 46: 'last' },
+        { 42: 43, 72: 'last' },
+      ],
       current: { chapter: 1, textNumber: 0 },
       trackPosition: 0,
       link: 'https://krisna.hu/bhagavad-gita/',
@@ -54,12 +63,9 @@ export default {
   },
   computed: {
     text: function () {
-      return (
-        `${this.current.chapter}. fejezet ` +
-        (this.current.textNumber
-          ? `${this.current.textNumber}. vers`
-          : 'bevezetés')
-      )
+      return this.current.textNumber
+        ? `${this.current.textNumber}. vers`
+        : 'bevezetés'
     },
   },
   created() {
@@ -90,30 +96,28 @@ export default {
       let nextNumber
 
       // if the current is a speacial one
-      if (this.current.textNumber.indexOf('-') != -1) {
+      if (isNaN(this.current.textNumber)) {
         nextNumber = parseInt(this.current.textNumber.split('-')[1]) + 1
       } else {
         nextNumber = parseInt(this.current.textNumber) + 1
       }
 
       if (
-        Object.keys(this.bg.texts[this.current.chapter - 1]).indexOf(
+        Object.keys(this.bg[this.current.chapter - 1]).indexOf(
           nextNumber.toString()
         ) != -1
       ) {
-        return (
-          nextNumber + '-' + this.bg.texts[this.current.chapter - 1][nextNumber]
-        )
+        return nextNumber + '-' + this.bg[this.current.chapter - 1][nextNumber]
       }
       return nextNumber
     },
     play() {
-      if (this.playing) {
-        this.playing = false
-        this.audio.pause()
-        return
-      }
-      this.startPlay()
+      this.playing = true
+      this.audio.play()
+    },
+    pause() {
+      this.playing = false
+      this.audio.pause()
     },
     playNext() {
       // TODO is the current text is the last one in the chapter #21
@@ -128,11 +132,7 @@ export default {
       this.audio.src = `${this.link}BG_${
         this.current.chapter
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
-      this.startPlay()
-    },
-    startPlay() {
-      this.playing = true
-      this.audio.play()
+      this.play()
     },
   },
 }
