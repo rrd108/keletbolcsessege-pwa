@@ -26,8 +26,8 @@
         <FontAwesomeIcon icon="forward"></FontAwesomeIcon>
       </section>
 
+      <h6><span :style="`width: ${trackPosition}%`"> </span></h6>
       <h5>{{ text }}</h5>
-      <h6 :style="`width: ${trackPosition}%`"></h6>
     </main>
   </div>
 </template>
@@ -180,14 +180,22 @@ section {
 }
 
 h5 {
-  margin: 0;
+  margin: 1rem 0 0 0;
   text-align: center;
   font-weight: 500;
 }
 h6 {
+  position: relative;
   margin: 0;
-  background-color: $primary;
   height: 0.25rem;
+  background-color: #9c885c;
+
+  span {
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    background-color: $primary;
+  }
 }
 .home-leave-to {
   header {
