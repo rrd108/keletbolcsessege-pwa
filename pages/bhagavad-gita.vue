@@ -41,10 +41,7 @@ export default {
     return {
       audio: null,
       bg: {
-        texts: [
-          [0, '16-18', '21-22', '37-38', 46],
-          [0, '42-43', 72],
-        ],
+        texts: [{ 16: 18, 21: 22, 37: 38, 46: 'last' }, ['42-43', 72]],
       },
       current: { chapter: 1, textNumber: 0 },
       trackPosition: 0,
@@ -55,8 +52,10 @@ export default {
   },
   created() {
     if (process.client && localStorage.getItem('KrisnaNet.currentChapter')) {
-      this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter') ?? 1
-      this.current.textNumber = localStorage.getItem('KrisnaNet.currentTextNumber') ?? 0
+      this.current.chapter =
+        localStorage.getItem('KrisnaNet.currentChapter') ?? 1
+      this.current.textNumber =
+        localStorage.getItem('KrisnaNet.currentTextNumber') ?? 0
     }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     if (process.client) {
@@ -75,6 +74,26 @@ export default {
       const { currentTime, duration } = event.path[0]
       this.trackPosition = (currentTime / duration) * 100
     },
+    getNext() {
+      //handle speacial text numbers
+      let nextNumber = parseInt(this.current.textNumber) + 1
+
+      // if the current is a speacial one
+      if (this.current.textNumber.indexOf('-') != -1) {
+        nextNumber = parseInt(this.current.textNumber.split('-')[1]) + 1
+      }
+
+      if (
+        Object.keys(this.bg.texts[this.current.chapter - 1]).indexOf(
+          nextNumber.toString()
+        ) != -1
+      ) {
+        return (
+          nextNumber + '-' + this.bg.texts[this.current.chapter - 1][nextNumber]
+        )
+      }
+      return nextNumber
+    },
     play() {
       if (this.playing) {
         this.playing = false
@@ -84,20 +103,24 @@ export default {
       this.startPlay()
     },
     playNext() {
-      // TODO check if the next is a special number #20
       // TODO is the current text is the last one in the chapter #21
       if (process.client) {
         localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
-        localStorage.setItem('KrisnaNet.currentTextNumber', this.current.textNumber)
+        localStorage.setItem(
+          'KrisnaNet.currentTextNumber',
+          this.current.textNumber
+        )
       }
-      this.current.textNumber++
+      this.current.textNumber = this.getNext()
       this.audio.src = `${this.link}BG_${
         this.current.chapter
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
       this.startPlay()
     },
     setText() {
-      this.text = this.current.textNumber ? `${this.current.textNumber}. vers` : 'bevezetés'
+      this.text = this.current.textNumber
+        ? `${this.current.textNumber}. vers`
+        : 'bevezetés'
     },
     startPlay() {
       this.playing = true
