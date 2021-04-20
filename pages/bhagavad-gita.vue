@@ -46,24 +46,24 @@ export default {
           [0, '42-43', 72],
         ],
       },
-      current: { chapter: 1, text: 0 },
+      current: { chapter: 1, textNumber: 0 },
       trackPosition: 0,
       link: 'https://krisna.hu/bhagavad-gita/',
       playing: false,
-      text: null,
+      text: '',
     }
   },
   created() {
     if (process.client && localStorage.getItem('KrisnaNet.currentChapter')) {
-      this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter')
-      this.current.text = localStorage.getItem('KrisnaNet.currentText')
+      this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter') ?? 1
+      this.current.textNumber = localStorage.getItem('KrisnaNet.currentTextNumber') ?? 0
     }
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
     if (process.client) {
       this.audio = new Audio(
         `${this.link}BG_${
           this.current.chapter
-        }_${this.current.text.toString().padStart(2, 0)}.mp3`
+        }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
       )
       this.audio.addEventListener('timeupdate', this.calculatetrackPosition)
       this.audio.addEventListener('ended', this.playNext)
@@ -88,16 +88,16 @@ export default {
       // TODO is the current text is the last one in the chapter #21
       if (process.client) {
         localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
-        localStorage.setItem('KrisnaNet.currentText', this.current.text)
+        localStorage.setItem('KrisnaNet.currentTextNumber', this.current.textNumber)
       }
-      this.current.text++
+      this.current.textNumber++
       this.audio.src = `${this.link}BG_${
         this.current.chapter
-      }_${this.current.text.toString().padStart(2, 0)}.mp3`
+      }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
       this.startPlay()
     },
     setText() {
-      this.text = this.current.text ? `${this.current.text}. vers` : 'bevezetés'
+      this.text = this.current.textNumber ? `${this.current.textNumber}. vers` : 'bevezetés'
     },
     startPlay() {
       this.playing = true
