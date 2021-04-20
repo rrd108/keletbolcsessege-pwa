@@ -41,14 +41,26 @@ export default {
     return {
       audio: null,
       bg: {
-        texts: [{ 16: 18, 21: 22, 37: 38, 46: 'last' }, ['42-43', 72]],
+        texts: [
+          { 16: 18, 21: 22, 37: 38, 46: 'last' },
+          { 42: 43, 72: 'last' },
+        ],
       },
       current: { chapter: 1, textNumber: 0 },
       trackPosition: 0,
       link: 'https://krisna.hu/bhagavad-gita/',
       playing: false,
-      text: '',
     }
+  },
+  computed: {
+    text: function () {
+      return (
+        `${this.current.chapter}. fejezet ` +
+        (this.current.textNumber
+          ? `${this.current.textNumber}. vers`
+          : 'bevezetés')
+      )
+    },
   },
   created() {
     if (process.client && localStorage.getItem('KrisnaNet.currentChapter')) {
@@ -67,7 +79,6 @@ export default {
       this.audio.addEventListener('timeupdate', this.calculatetrackPosition)
       this.audio.addEventListener('ended', this.playNext)
     }
-    this.setText()
   },
   methods: {
     calculatetrackPosition(event) {
@@ -119,15 +130,9 @@ export default {
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
       this.startPlay()
     },
-    setText() {
-      this.text = this.current.textNumber
-        ? `${this.current.textNumber}. vers`
-        : 'bevezetés'
-    },
     startPlay() {
       this.playing = true
       this.audio.play()
-      this.setText()
     },
   },
 }
