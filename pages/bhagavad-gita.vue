@@ -54,8 +54,7 @@ export default {
     }
   },
   created() {
-    // TODO localStorage is not existing on server side, so it will fail #18
-    if (localStorage.getItem('KrisnaNet.currentChapter')) {
+    if (process.client && localStorage.getItem('KrisnaNet.currentChapter')) {
       this.current.chapter = localStorage.getItem('KrisnaNet.currentChapter')
       this.current.text = localStorage.getItem('KrisnaNet.currentText')
     }
@@ -86,8 +85,10 @@ export default {
     playNext() {
       // TODO check if the next is a special number #20
       // TODO is the current text is the last one in the chapter #21
-      localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
-      localStorage.setItem('KrisnaNet.currentText', this.current.text)
+      if (process.client) {
+        localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
+        localStorage.setItem('KrisnaNet.currentText', this.current.text)
+      }
       this.current.text++
       this.audio.src = `${this.link}BG_${
         this.current.chapter
@@ -166,7 +167,6 @@ h6 {
   header {
     background-color: $primary;
     height: $header-closed-height;
- }
+  }
 }
-
 </style>
