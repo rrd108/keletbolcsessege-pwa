@@ -71,6 +71,7 @@ export default {
     manifest: {
       lang: 'hu',
       background_color: '#ede0c5',
+      theme_color: '#ede0c5',
       orientation: 'portrait'
     }
   },
