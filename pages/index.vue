@@ -10,8 +10,8 @@ div {
   align-items: flex-end;
   justify-content: center;
   height: 100vh;
-  background-image: url('~/assets/background-logo.png');
-  background-size: 35rem;
+  background-image: url('~/assets/logo.png');
+  background-size: 15rem;
   background-repeat: no-repeat;
   background-position: center center;
 
