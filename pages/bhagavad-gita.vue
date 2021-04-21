@@ -10,7 +10,7 @@
         <FontAwesomeIcon icon="volume-up"></FontAwesomeIcon>
       </section>
       <section id="remote">
-        <FontAwesomeIcon icon="backward"></FontAwesomeIcon>
+        <FontAwesomeIcon icon="backward" @click="prev"></FontAwesomeIcon>
         <FontAwesomeIcon
           icon="play"
           class="middle-button"
@@ -23,7 +23,7 @@
           @click="pause"
           v-show="playing"
         ></FontAwesomeIcon>
-        <FontAwesomeIcon icon="forward"></FontAwesomeIcon>
+        <FontAwesomeIcon icon="forward" @click="next"></FontAwesomeIcon>
       </section>
 
       <h6><span :style="`width: ${trackPosition}%`"> </span></h6>
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-// TODO add methods for previous and next icons of the remote #16
 export default {
   transition: 'take-apart',
   data() {
@@ -93,6 +92,7 @@ export default {
       this.trackPosition = (currentTime / duration) * 100
     },
     getNext() {
+      // TODO is the current text is the last one in the chapter #21
       //handle speacial text numbers
       let nextNumber
 
@@ -112,6 +112,9 @@ export default {
       }
       return nextNumber
     },
+    next() {
+      this.current.textNumber = this.getNext()
+    },
     play() {
       this.setAudioSrc()
       this.playing = true
@@ -122,7 +125,6 @@ export default {
       this.audio.pause()
     },
     playNext() {
-      // TODO is the current text is the last one in the chapter #21
       if (process.client) {
         localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
         localStorage.setItem(
@@ -133,6 +135,9 @@ export default {
       this.current.textNumber = this.getNext()
       this.setAudioSrc()
       this.play()
+    },
+    prev(){
+      this.current.textNumber = this.current.textNumber ? this.current.textNumber - 1 : 0
     },
     setAudioSrc() {
       this.audio.src = `${this.link}BG_${
