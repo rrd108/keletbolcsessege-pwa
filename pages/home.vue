@@ -49,6 +49,7 @@ main {
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
+    box-shadow: .1em .1em .3em $primary;
 
     div {
       display: flex;
