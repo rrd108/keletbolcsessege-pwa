@@ -10,7 +10,7 @@
         <FontAwesomeIcon icon="volume-up"></FontAwesomeIcon>
       </section>
       <section id="remote">
-        <FontAwesomeIcon icon="backward"></FontAwesomeIcon>
+        <FontAwesomeIcon icon="backward" @click="prev"></FontAwesomeIcon>
         <FontAwesomeIcon
           icon="play"
           class="middle-button"
@@ -20,47 +20,53 @@
         <FontAwesomeIcon
           icon="pause"
           class="middle-button"
-          @click="play"
+          @click="pause"
           v-show="playing"
         ></FontAwesomeIcon>
-        <FontAwesomeIcon icon="forward"></FontAwesomeIcon>
+        <FontAwesomeIcon icon="forward" @click="next"></FontAwesomeIcon>
       </section>
 
       <h6><span :style="`width: ${trackPosition}%`"> </span></h6>
-      <h5>{{ text }}</h5>
+      <div id="selector">
+        <select v-model="current.chapter" @change="current.textNumber = 0">
+          <option
+            v-for="(chapter, index) in bg"
+            :key="index"
+            :value="index + 1"
+          >
+            {{ index + 1 }}. fejezet
+          </option>
+        </select>
+        <select v-model="current.textNumber">
+          <option value="0">bevezetés</option>
+          <option
+            v-for="verse in bg[current.chapter - 1].last"
+            :key="verse"
+            :value="verse"
+          >
+            {{ verse }}. vers
+          </option>
+        </select>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
-// TODO add methods for previous and next icons of the remote #16
-// TODO let the user choose a chapter #17
 export default {
   transition: 'take-apart',
   data() {
     return {
       audio: null,
-      bg: {
-        texts: [
-          { 16: 18, 21: 22, 37: 38, 46: 'last' },
-          { 42: 43, 72: 'last' },
-        ],
-      },
+      bg: [
+        { 16: 18, 21: 22, 37: 38, last: 46 },
+        { 42: 43, last: 72 },
+      ],
       current: { chapter: 1, textNumber: 0 },
       trackPosition: 0,
       link: 'https://krisna.hu/bhagavad-gita/',
       playing: false,
     }
-  },
-  computed: {
-    text: function () {
-      return (
-        `${this.current.chapter}. fejezet ` +
-        (this.current.textNumber
-          ? `${this.current.textNumber}. vers`
-          : 'bevezetés')
-      )
-    },
   },
   created() {
     if (process.client && localStorage.getItem('KrisnaNet.currentChapter')) {
@@ -86,37 +92,39 @@ export default {
       this.trackPosition = (currentTime / duration) * 100
     },
     getNext() {
+      // TODO is the current text is the last one in the chapter #21
       //handle speacial text numbers
       let nextNumber
 
       // if the current is a speacial one
-      if (this.current.textNumber.indexOf('-') != -1) {
+      if (isNaN(this.current.textNumber)) {
         nextNumber = parseInt(this.current.textNumber.split('-')[1]) + 1
       } else {
         nextNumber = parseInt(this.current.textNumber) + 1
       }
 
       if (
-        Object.keys(this.bg.texts[this.current.chapter - 1]).indexOf(
+        Object.keys(this.bg[this.current.chapter - 1]).indexOf(
           nextNumber.toString()
         ) != -1
       ) {
-        return (
-          nextNumber + '-' + this.bg.texts[this.current.chapter - 1][nextNumber]
-        )
+        return nextNumber + '-' + this.bg[this.current.chapter - 1][nextNumber]
       }
       return nextNumber
     },
+    next() {
+      this.current.textNumber = this.getNext()
+    },
     play() {
-      if (this.playing) {
-        this.playing = false
-        this.audio.pause()
-        return
-      }
-      this.startPlay()
+      this.setAudioSrc()
+      this.playing = true
+      this.audio.play()
+    },
+    pause() {
+      this.playing = false
+      this.audio.pause()
     },
     playNext() {
-      // TODO is the current text is the last one in the chapter #21
       if (process.client) {
         localStorage.setItem('KrisnaNet.currentChapter', this.current.chapter)
         localStorage.setItem(
@@ -125,14 +133,16 @@ export default {
         )
       }
       this.current.textNumber = this.getNext()
+      this.setAudioSrc()
+      this.play()
+    },
+    prev(){
+      this.current.textNumber = this.current.textNumber ? this.current.textNumber - 1 : 0
+    },
+    setAudioSrc() {
       this.audio.src = `${this.link}BG_${
         this.current.chapter
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
-      this.startPlay()
-    },
-    startPlay() {
-      this.playing = true
-      this.audio.play()
     },
   },
 }
@@ -184,11 +194,6 @@ section {
   margin: 1.5rem;
 }
 
-h5 {
-  margin: 1rem 0 0 0;
-  text-align: center;
-  font-weight: 500;
-}
 h6 {
   position: relative;
   margin: 0;
@@ -202,6 +207,20 @@ h6 {
     background-color: $primary;
   }
 }
+
+#selector {
+  display: flex;
+  margin: 1em;
+  justify-content: space-around;
+
+  select {
+    background-color: $secondary;
+    font-size: 1.5rem;
+    border: none;
+    color: $primary;
+  }
+}
+
 .home-leave-to {
   header {
     background-color: $primary;
