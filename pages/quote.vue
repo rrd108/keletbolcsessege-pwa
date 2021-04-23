@@ -28,10 +28,10 @@ export default {
   // TODO the quote should be get from the server randomly daily #6
   methods: {
     swipeHandler(direction) {
-      if (direction == 'right') {
+      if (direction == 'left') {
         this.$router.push({ path: '/bhagavad-gita' })
       }
-      if (direction == 'left') {
+      if (direction == 'right') {
         this.$router.push({ path: '/home' })
       }
     },

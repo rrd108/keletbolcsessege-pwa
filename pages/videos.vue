@@ -57,7 +57,7 @@ export default {
       return title.substr(0, title.length - 17)
     },
     swipeHandler(direction) {
-      if (direction == 'left') {
+      if (direction == 'right') {
         this.$router.push({ path: '/bhagavad-gita' })
       }
     },

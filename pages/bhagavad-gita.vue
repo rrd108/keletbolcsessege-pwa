@@ -147,10 +147,10 @@ export default {
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
     },
     swipeHandler(direction) {
-      if (direction == 'left') {
+      if (direction == 'right') {
         this.$router.push({ path: '/quote' })
       }
-      if (direction == 'right') {
+      if (direction == 'left') {
         this.$router.push({ path: '/videos' })
       }
     },
