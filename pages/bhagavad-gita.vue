@@ -136,8 +136,10 @@ export default {
       this.setAudioSrc()
       this.play()
     },
-    prev(){
-      this.current.textNumber = this.current.textNumber ? this.current.textNumber - 1 : 0
+    prev() {
+      this.current.textNumber = this.current.textNumber
+        ? this.current.textNumber - 1
+        : 0
     },
     setAudioSrc() {
       this.audio.src = `${this.link}BG_${
