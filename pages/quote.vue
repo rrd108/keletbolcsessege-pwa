@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-touch:swipe="swipeHandler">
     <AppHeader
       title="Napi bölcsesség"
       :subtitle="today"
@@ -26,6 +26,16 @@ export default {
     }
   },
   // TODO the quote should be get from the server randomly daily #6
+  methods: {
+    swipeHandler(direction) {
+      if (direction == 'right') {
+        this.$router.push({ path: '/bhagavad-gita' })
+      }
+      if (direction == 'left') {
+        this.$router.push({ path: '/home' })
+      }
+    },
+  },
 }
 </script>
 
@@ -47,11 +57,11 @@ p {
   header {
     background-color: $primary;
     height: $header-closed-height;
- }
- main {
-   section {
-     transform: translate(0);
-   }
- }
+  }
+  main {
+    section {
+      transform: translate(0);
+    }
+  }
 }
 </style>

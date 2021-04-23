@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <AppHeader title="Videók" subtitle="Sivarama Swami, Krisna.hu" chapter="Legfrisebb" />
+  <div v-touch:swipe="swipeHandler">
+    <AppHeader
+      title="Videók"
+      subtitle="Sivarama Swami, Krisna.hu"
+      chapter="Legfrisebb"
+    />
     <main>
       <section v-for="video in videos" :key="video.snippet.resourceId.videoId">
         <img
@@ -42,12 +46,20 @@ export default {
         )
       )
     )
-    const videos = [...videoLists[0].items, ...videoLists[1].items].sort((a,b) => (a.publishedAt > b.publishedAt) ? 1 : -1)
+    const videos = [
+      ...videoLists[0].items,
+      ...videoLists[1].items,
+    ].sort((a, b) => (a.publishedAt > b.publishedAt ? 1 : -1))
     return { videos, selectedVideoId: null }
   },
   methods: {
     getVideoTitle(title) {
       return title.substr(0, title.length - 17)
+    },
+    swipeHandler(direction) {
+      if (direction == 'left') {
+        this.$router.push({ path: '/bhagavad-gita' })
+      }
     },
   },
 }

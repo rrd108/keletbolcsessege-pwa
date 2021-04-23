@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-touch:swipe="swipeHandler">
     <AppHeader
       title="Bhagavad-gita"
       subtitle="hangoskönyv"
@@ -145,6 +145,14 @@ export default {
       this.audio.src = `${this.link}BG_${
         this.current.chapter
       }_${this.current.textNumber.toString().padStart(2, 0)}.mp3`
+    },
+    swipeHandler(direction) {
+      if (direction == 'left') {
+        this.$router.push({ path: '/quote' })
+      }
+      if (direction == 'right') {
+        this.$router.push({ path: '/videos' })
+      }
     },
   },
 }
