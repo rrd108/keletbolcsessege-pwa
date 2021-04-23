@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+header {
+  background-position: -7rem -7rem;
+}
 main {
   padding: 0.5em;
 
@@ -49,7 +52,11 @@ main {
     border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
-    box-shadow: .1em .1em .3em $primary;
+    background-image: url('~assets/bg.png');
+    background-position: -3.5rem 3.5rem;
+    background-size: 8rem;
+    background-repeat: no-repeat;
+    box-shadow: 0.1em 0.1em 0.3em $primary;
 
     div {
       display: flex;

@@ -36,11 +36,15 @@ header {
   mask-image: url('~assets/header-bg.svg');
   mask-position: bottom;
   mask-repeat: no-repeat;
+  background-image: url('~assets/bg.png');
+  background-position: -3.5rem -3.5rem;
+  background-size: 8rem;
+  background-repeat: no-repeat;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position:relative;
+  position: relative;
 
   nav {
     display: flex;
@@ -97,7 +101,8 @@ header {
 
 .home-leave-to {
   header {
-    nav a:not(:first-child), section {
+    nav a:not(:first-child),
+    section {
       opacity: 0;
     }
   }
