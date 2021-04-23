@@ -14,7 +14,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "vue-youtube-embed": "^2.2.2"
+    "vue-youtube-embed": "^2.2.2",
+    "vue2-touch-events": "^3.2.2"
   },
   "devDependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.3",

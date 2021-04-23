@@ -20,7 +20,10 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '@/plugins/youtube.js', ssr: false }],
+  plugins: [
+    { src: '@/plugins/youtube.js', ssr: false },
+    { src: '@/plugins/vue-touch', ssr: false }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
