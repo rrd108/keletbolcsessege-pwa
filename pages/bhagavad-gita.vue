@@ -11,18 +11,14 @@
       </section>
       <section id="remote">
         <FontAwesomeIcon icon="backward" @click="prev"></FontAwesomeIcon>
-        <FontAwesomeIcon
-          icon="play"
-          class="middle-button"
-          @click="play"
-          v-show="!playing"
-        ></FontAwesomeIcon>
-        <FontAwesomeIcon
-          icon="pause"
-          class="middle-button"
-          @click="pause"
-          v-show="playing"
-        ></FontAwesomeIcon>
+        <transition name="spin" mode="out-in">
+          <FontAwesomeIcon
+            :icon="playing ? 'play' : 'pause'"
+            class="middle-button"
+            @click="middleButtonHandler"
+            :key="playing"
+          ></FontAwesomeIcon>
+        </transition>
         <FontAwesomeIcon icon="forward" @click="next"></FontAwesomeIcon>
       </section>
 
@@ -55,6 +51,7 @@
 <script>
 export default {
   transition: 'take-apart',
+  name: 'bhagavad-gita',
   data() {
     return {
       audio: null,
@@ -111,6 +108,9 @@ export default {
         return nextNumber + '-' + this.bg[this.current.chapter - 1][nextNumber]
       }
       return nextNumber
+    },
+    middleButtonHandler(){
+      return !this.playing ? this.play() : this.pause()
     },
     next() {
       this.current.textNumber = this.getNext()
@@ -236,5 +236,14 @@ h6 {
     background-color: $primary;
     height: $header-closed-height;
   }
+}
+
+.spin-enter-active,
+.spin-leave-active {
+  transition: all 300ms ease-in-out;
+}
+.spin-enter, .spin-leave-to  {
+  transform: rotate(180deg) scale(.3);
+  opacity: 0;
 }
 </style>
