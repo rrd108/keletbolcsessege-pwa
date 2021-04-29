@@ -13,7 +13,7 @@
         <FontAwesomeIcon icon="backward" @click="prev"></FontAwesomeIcon>
         <transition name="spin" mode="out-in">
           <FontAwesomeIcon
-            :icon="playing ? 'play' : 'pause'"
+            :icon="!playing ? 'play' : 'pause'"
             class="middle-button"
             @click="middleButtonHandler"
             :key="playing"
