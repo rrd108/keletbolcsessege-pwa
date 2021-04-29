@@ -46,10 +46,9 @@ export default {
         )
       )
     )
-    const videos = [
-      ...videoLists[0].items,
-      ...videoLists[1].items,
-    ].sort((a, b) => (a.publishedAt > b.publishedAt ? 1 : -1))
+    const videos = [...videoLists[0].items, ...videoLists[1].items]
+      .filter((video) => video.snippet.thumbnails.medium)
+      .sort((a, b) => (new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)))
     return { videos, selectedVideoId: null }
   },
   methods: {
